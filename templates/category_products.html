@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин любых товаров</title>
+</head>
+<body>
+    <h1>Магазин</h1>
+    {% if current_user.is_authenticated %}
+    <a class="navbar-brand" href="/logout">{{current_user.name}}</a>
+    <a class="navbar-brand" href="/add_product">Добавить товар</a>
+    <a class="navbar-brand" href="/my_products">Мои товары</a>
+    {% else %}
+    <p>
+        <a class="btn btn-primary" href="/register">Зарегистрироваться</a>
+        <a class="btn btn-success" href="/login">Войти</a>
+    </p>
+    {% endif %}
+    <h2>Каталог товаров</h2>
+    <table>
+        <tr>
+            {% for category in categories %}
+            <td><a href="/category_products/{{category.id}}">{{category.name}}</a></td>
+            {% endfor %}
+            <td><a href="/">Все товары</a></td>
+        </tr>
+    </table>
+    <h1>{{ctgr}}</h1>
+    {% for product in products %}
+    <div>
+        <p>{{product.name}}</p>
+        <p>Описание: {{product.description}}</p>
+        <p>Цена: {{product.cost}} руб.</p>
+        <p>Продавец: {{product.user.name}} {{product.user.surname}}</p>
+        <p>Город: {{product.user.city}}</p>
+        {% if product.user != current_user %}
+        <a href="/view_product/{{product.id}}" class="btn btn-secondary">Посмотреть товар</a>
+        {% else %}
+        <a href="/edit_product/{{product.id}}" class="btn btn-warning">Изменить</a>
+        <a href="/delete_product/{{product.id}}" class="btn btn-warning">Удалить</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин любых товаров</title>
+</head>
+<body>
+    <h1>Магазин</h1>
+    {% if current_user.is_authenticated %}
+    <a class="navbar-brand" href="/logout">{{current_user.name}}</a>
+    <a class="navbar-brand" href="/add_product">Добавить товар</a>
+    <a class="navbar-brand" href="/my_products">Мои товары</a>
+    <a class="navbar-brand" href="/view_purchases">Заказы</a>
+    {% else %}
+    <p>
+        <a class="btn btn-primary" href="/register">Зарегистрироваться</a>
+        <a class="btn btn-success" href="/login">Войти</a>
+    </p>
+    {% endif %}
+    <h2>Каталог товаров</h2>
+    <a href="/view_purchases">Заказы</a>
+    <table>
+        <tr>
+            {% for category in categories %}
+            <td><a href="/category_products/{{category.id}}">{{category.name}}</a></td>
+            {% endfor %}
+        </tr>
+    </table>
+    <h2>Все товары</h2>
+    {% block content %}{% endblock %}
+</body>
+</html>

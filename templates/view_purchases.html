@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+</head>
+<body>
+    <h1>Заказы</h1>
+    {% for purchase in purchases %}
+    <div>
+        <p>Покупатель: {{purchase.name}} {{purchase.surname}}</p>
+        <p>тел.: {{purchase.phone}}</p>
+        <p>email: {{purchase.email}}</p>
+        <p>Адрес: {{purchase.address}}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

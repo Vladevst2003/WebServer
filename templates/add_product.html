@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить товар</title>
+</head>
+<body>
+    <h1>Добавление товара</h1>
+    <form action="" method="post">
+        {{form.hidden_tag()}}
+        <p>
+            {{form.name.label}}<br>
+            {{form.name(class="form-control", type="name")}}<br>
+            {% for errors in form.name.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.description.label}}<br>
+            {{form.description(class="form-control", type="description")}}<br>
+            {% for error in form.description.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.cost.label}}<br>
+            {{form.cost(class="form-control", type="cost")}}<br>
+            {% for error in form.cost.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.category.label}}<br>
+            {{form.category(class="form-control", type="cost")}}<br>
+            {% for error in form.category.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>{{form.submit(type="submit", class="btn btn-primary")}}</p>
+        <div>{{message}}</div>
+    </form>
+</body>
+</html>

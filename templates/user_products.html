@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои товары</title>
+</head>
+<body>
+    <a href="/" class="btn btn-secondary">Вернуться</a>
+    <a class="navbar-brand" href="/add_product">Добавить товар</a>
+    <h1>Мои товары</h1>
+    {% for product in products %}
+    <div>
+        <p>Название: {{product.name}}</p>
+        <p>Описание: {{product.description}}</p>
+        <p>Цена: {{product.cost}}</p>
+        <a href="/edit_product/{{product.id}}" class="btn btn-warning">Изменить</a>
+        <a href="/delete_product/{{product.id}}" class="btn btn-warning">Удалить</a>
+    </div>
+    {% endfor %}
+</body>
+</html>

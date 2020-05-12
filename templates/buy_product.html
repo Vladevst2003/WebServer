@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Купить</title>
+</head>
+<body>
+    <h1>Купить товар</h1>
+    <form action="" method="post">
+        {{form.hidden_tag()}}
+        <p>
+            {{form.name.label}}<br>
+            {{form.name(class="form-control", type="name")}}<br>
+            {% for errors in form.name.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.surname.label}}<br>
+            {{form.surname(class="form-control", type="surname")}}<br>
+            {% for errors in form.surname.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.phone.label}}<br>
+            {{form.phone(class="form-control", type="phone")}}<br>
+            {% for errors in form.phone.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.email.label}}<br>
+            {{form.email(class="form-control", type="phone")}}<br>
+            {% for errors in form.phone.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{form.address.label}}<br>
+            {{form.address(class="form-control", type="phone")}}<br>
+            {% for errors in form.phone.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+        </p>
+        <p>{{form.submit(type="submit", class="btn btn-primary")}}</p>
+    </form>
+</body>
+</html>

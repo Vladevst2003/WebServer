@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+{% for product in products %}
+<div>
+    <p>{{product.name}}</p>
+    <p>Описание: {{product.description}}</p>
+    <p>Цена: {{product.cost}} руб.</p>
+    <p>Продавец: {{product.user.name}} {{product.user.surname}}</p>
+    <p>Город: {{product.user.city}}</p>
+    {% if product.user != current_user %}
+    <a href="/view_product/{{product.id}}" class="btn btn-secondary">Посмотреть товар</a>
+    {% else %}
+    <a href="/edit_product/{{product.id}}" class="btn btn-warning">Изменить</a>
+    <a href="/delete_product/{{product.id}}" class="btn btn-warning">Удалить</a>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}
